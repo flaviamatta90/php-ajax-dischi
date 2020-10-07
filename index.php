@@ -7,7 +7,12 @@
     <title></title>
   </head>
   <body>
-    <div class="container">
+    <header>
+      <div class="inside-header">
+        <!-- <img class="logo" src="logo.png" alt="logo"> -->
+      </div>
+    </header>
+    <div class="container-php">
       <?php if(!empty($database)){?>
         <?php foreach ($database as $databases) { ?>
           <h2><?php echo $databases['title']; ?></h2>
