@@ -13,18 +13,22 @@
         <img class="logo" src="logo.png" alt="logo">
       </div>
     </header>
-    <div class="container-php">
-      <?php if(!empty($database)){?>
-        <?php foreach ($database as $databases) { ?>
-          <h2><?php echo $databases['title']; ?></h2>
-          <h3> <?php echo $databases["author"]?> </h3>
-          <h3> <?php echo $databases["year"]?> </h3>
-          <img src="<?php echo $databases["poster"]?> ">
-          <?php } ?>
-      <?php } else {
-        echo "Non ci sono album presenti";
-      }?>
-    </div>
+    <main>
+      <div class="inside-main">
+        <div class="container-main">
+          <?php if(!empty($database)){?>
+            <?php foreach ($database as $databases) { ?>
+              <img class="album-img" src="<?php echo $databases["poster"]?> ">
+              <h2><?php echo $databases['title']; ?></h2>
+              <h3> <?php echo $databases["author"]?> </h3>
+              <h3> <?php echo $databases["year"]?> </h3>
+              <?php } ?>
+          <?php } else {
+            echo "Non ci sono album presenti";
+          }?>
+        </div>
+      </div>
+    </main>
 
   </body>
 </html>
