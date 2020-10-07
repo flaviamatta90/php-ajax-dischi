@@ -10,7 +10,7 @@
   <body>
     <header>
       <div class="inside-header">
-        <!-- <img class="logo" src="logo.png" alt="logo"> -->
+        <img class="logo" src="logo.png" alt="logo">
       </div>
     </header>
     <div class="container-php">
@@ -24,6 +24,7 @@
       <?php } else {
         echo "Non ci sono album presenti";
       }?>
+    </div>
 
   </body>
 </html>
