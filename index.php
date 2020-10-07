@@ -15,18 +15,19 @@
     </header>
     <main>
       <div class="inside-main">
+        <?php if(!empty($database)){?>
+          <?php foreach ($database as $databases) { ?>
         <div class="container-main">
-          <?php if(!empty($database)){?>
-            <?php foreach ($database as $databases) { ?>
-              <img class="album-img" src="<?php echo $databases["poster"]?> ">
-              <h2><?php echo $databases['title']; ?></h2>
-              <h3> <?php echo $databases["author"]?> </h3>
-              <h3> <?php echo $databases["year"]?> </h3>
-              <?php } ?>
-          <?php } else {
-            echo "Non ci sono album presenti";
-          }?>
+          <img class="album-img" src="<?php echo $databases["poster"]?> ">
+          <h3><?php echo $databases['title']; ?></h3>
+          <h4> <?php echo $databases["author"]?> </h4>
+          <h4> <?php echo $databases["year"]?> </h4>
         </div>
+          <?php } ?>
+        <?php } else {
+          echo "Non ci sono album presenti";
+        }?>
+
       </div>
     </main>
 
