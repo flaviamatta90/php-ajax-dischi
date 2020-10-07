@@ -13,7 +13,7 @@
           <h2><?php echo $databases['title']; ?></h2>
           <h3> <?php echo $databases["author"]?> </h3>
           <h3> <?php echo $databases["year"]?> </h3>
-          <h3> <?php echo $databases["poster"]?> </h3>
+          <img src="<?php echo $databases["poster"]?> ">
           <?php } ?>
       <?php } else {
         echo "Non ci sono album presenti";
