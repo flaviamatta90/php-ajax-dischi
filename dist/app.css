@@ -48,8 +48,7 @@ main {
   padding: 15px 0px;
 }
 
-h3,
-h4 {
+h3, h4 {
   color: #fff;
   padding: 10px 0;
 }
@@ -57,4 +56,3 @@ h4 {
 h4 {
   color: #808080;
 }
-

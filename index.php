@@ -1,5 +1,3 @@
-<?php include "db.php"?>
-
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -15,21 +13,13 @@
     </header>
     <main>
       <div class="inside-main">
-        <?php if(!empty($database)){?>
-          <?php foreach ($database as $databases) { ?>
-        <div class="container-main">
-          <img class="album-img" src="<?php echo $databases["poster"]?> ">
-          <h3><?php echo $databases['title']; ?></h3>
-          <h4> <?php echo $databases["author"]?> </h4>
-          <h4> <?php echo $databases["year"]?> </h4>
-        </div>
-          <?php } ?>
-        <?php } else {
-          echo "Non ci sono album presenti";
-        }?>
-
+        <script id="entry-template" type="text/x-handlebars-template">
+          
+        </script>
       </div>
     </main>
+
+    <script src= dist/app.js type="text/javascript" charset="utf-8" async defer></script>
 
   </body>
 </html>
