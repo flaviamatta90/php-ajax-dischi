@@ -16093,7 +16093,7 @@ var Handlebars = __webpack_require__(/*! handlebars */ "./node_modules/handlebar
 
 $(document).ready(function () {
   $.ajax({
-    "url": "http://localhost:81/php-ajax-dischi/server.php",
+    "url": "http://localhost:82/php-ajax-dischi/server.php",
     "method": "GET",
     "success": function success(data) {
       render(data);
@@ -16102,23 +16102,6 @@ $(document).ready(function () {
       alert("Errore");
     }
   });
-  $('.author-select').change(function () {
-    var author = $(this).val();
-    console.log(author);
-    $.ajax({
-      "url": 'http://localhost:88/php-ajax-dischi/server.php',
-      "method": 'GET',
-      "data": {
-        author: author
-      },
-      "success": function success(data) {
-        render(data);
-      },
-      "error": function error(err) {
-        alert("Errore");
-      }
-    });
-  });
 });
 
 function render(result) {
@@ -16126,21 +16109,20 @@ function render(result) {
   var template = Handlebars.compile(source);
 
   for (var i = 0; i < result.length; i++) {
-    if (result.length > 0) {
-      var album = result[i];
-      var context = {
-        "poster": album.poster,
-        "title": album.title,
-        "author": album.author,
-        "year": album.year
-      };
-      var html = template(context);
-      $(".inside-main").append(html);
-    }
+    var album = result[i];
+    var context = {
+      "poster": album.poster,
+      "title": album.title,
+      "author": album.author,
+      "year": album.year
+    };
+    var html = template(context);
+    $(".inside-main").append(html);
   }
 }
 
 ;
+y;
 
 /***/ }),
 
