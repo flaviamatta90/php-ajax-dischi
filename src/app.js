@@ -16,6 +16,25 @@ $(document).ready(function(){
   })
 });
 
+// $('.author-select').change(function(){
+//   var author = $(this).val();
+//   console.log(author);
+//
+//   $.ajax(
+//     {
+//       "url":'http://localhost:88/php-ajax-dischi/server.php',
+//       "method":'GET',
+//       "data": {
+//         author: author
+//       },
+//       "success": function (data){
+//         render(data);
+//       },
+//       "error": function(err){
+//         alert("Errore");
+//       }
+//     });
+//   });
 
 function render(result){
 
