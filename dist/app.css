@@ -12,7 +12,9 @@ header {
 }
 
 .inside-header {
-  width: 60%;
+  display: flex;
+  align-items: center;
+  width: 65%;
   margin: auto;
 }
 
