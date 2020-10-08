@@ -12,12 +12,15 @@
       </div>
     </header>
     <main>
-      <div class="inside-main">
-        <script id="entry-template" type="text/x-handlebars-template">
-          
-        </script>
-      </div>
+      <div class="inside-main"></div>
     </main>
+    <script id="entry-template" type="text/x-handlebars-template">
+      <img src="{{poster}}" alt="copertina">
+      <h3>{{title}}</h3>
+      <h4> {{author}} </h4>
+      <h4> {{year}} </h4>
+    </script>
+
 
     <script src= dist/app.js type="text/javascript" charset="utf-8" async defer></script>
 

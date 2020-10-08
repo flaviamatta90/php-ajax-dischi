@@ -16093,20 +16093,37 @@ var Handlebars = __webpack_require__(/*! handlebars */ "./node_modules/handlebar
 
 $(document).ready(function () {
   $.ajax({
-    "url": "http://localhost:81/server.php",
+    "url": "http://localhost:81/php-ajax-dischi/server.php",
     "method": "GET",
     "seccess": function seccess(data) {
+      var response = data.response;
       render(data);
+      console.log(data.response);
     },
     "error": function error(err) {
       alert("Errore");
     }
   });
 });
-var source = $("#entry-template").html();
-var template = Handlebars.compile(source);
-var context = {};
-var html = template(context);
+
+function render(server) {
+  var source = $("#entry-template").html();
+  var template = Handlebars.compile(source);
+
+  for (var i = 0; i < server.length; i++) {
+    var album = server[i];
+    var context = {
+      "poster": album.poster,
+      "title": album.title,
+      "author": album.author,
+      "year": album.year
+    };
+    var html = template(context);
+    $(".inside-main").append(html);
+  }
+}
+
+;
 
 /***/ }),
 
