@@ -3,58 +3,76 @@ const $ = require("jquery");
 const Handlebars = require("handlebars");
 
 $(document).ready(function(){
-  $.ajax({
 
-    "url": "http://localhost:82/php-ajax-dischi/server.php",
-    "method": "GET",
-    "success": function(data){
-      render(data);
-    },
+  $.ajax(
+    {
+      "url": "http://localhost:82/php-ajax-dischi/server.php",
+      "method": "GET",
+      "success": function(data){
+        render(data);
+        authorSelect(data);
+      },
     "error": function(err){
       alert("Errore");
     }
-  })
+  });
+
+
+  $('#author-select').change(function(){
+    var author = $(this).val();
+
+    $.ajax(
+      {
+        "url":'http://localhost:82/php-ajax-dischi/server.php',
+        "data": {
+          "author": author
+        },
+        "method":'GET',
+        "success": function (data){
+          render(data);
+        },
+        "error": function(err){
+          alert("Errore");
+      }
+    });
+
+  });
+
 });
 
-// $('.author-select').change(function(){
-//   var author = $(this).val();
-//   console.log(author);
-//
-//   $.ajax(
-//     {
-//       "url":'http://localhost:88/php-ajax-dischi/server.php',
-//       "method":'GET',
-//       "data": {
-//         author: author
-//       },
-//       "success": function (data){
-//         render(data);
-//       },
-//       "error": function(err){
-//         alert("Errore");
-//       }
-//     });
-//   });
-
-function render(result){
+function render(data){
+  $(".inside-main").html("");
 
   var source = $("#entry-template").html();
   var template = Handlebars.compile(source);
 
-  for(var i = 0; i < result.length; i++){
+  for(var i = 0; i < data.length; i++){
 
-    var album = result[i];
-
-    var context = {
-      "poster" : album.poster,
-      "title" : album.title,
-      "author" : album.author,
-      "year" : album.year
-    };
-
-    var html = template(context);
-
+    var html = template(data[i]);
     $(".inside-main").append(html);
   }
 };
-y
+
+  function authorSelect(data){
+    
+    var authors = [];
+
+    for(var i = 0; i < data.length; i++){
+     var author = data[i]["author"];
+
+     if(!authors.includes(author)){
+
+      var source = $("#author-template").html();
+      var template = Handlebars.compile(source);
+
+      var context = {
+        "author": author
+    };
+
+      var html = template(context);
+
+      $("#author-select").append(html);
+      authors.push(author);
+    }
+  }
+}

@@ -16097,32 +16097,61 @@ $(document).ready(function () {
     "method": "GET",
     "success": function success(data) {
       render(data);
+      authorSelect(data);
     },
     "error": function error(err) {
       alert("Errore");
     }
   });
+  $('#author-select').change(function () {
+    var author = $(this).val();
+    $.ajax({
+      "url": 'http://localhost:82/php-ajax-dischi/server.php',
+      "data": {
+        "author": author
+      },
+      "method": 'GET',
+      "success": function success(data) {
+        render(data);
+      },
+      "error": function error(err) {
+        alert("Errore");
+      }
+    });
+  });
 });
 
-function render(result) {
+function render(data) {
+  $(".inside-main").html("");
   var source = $("#entry-template").html();
   var template = Handlebars.compile(source);
 
-  for (var i = 0; i < result.length; i++) {
-    var album = result[i];
-    var context = {
-      "poster": album.poster,
-      "title": album.title,
-      "author": album.author,
-      "year": album.year
-    };
-    var html = template(context);
+  for (var i = 0; i < data.length; i++) {
+    var html = template(data[i]);
     $(".inside-main").append(html);
   }
 }
 
 ;
-y;
+
+function authorSelect(data) {
+  var authors = [];
+
+  for (var i = 0; i < data.length; i++) {
+    var author = data[i]["author"];
+
+    if (!authors.includes(author)) {
+      var source = $("#author-template").html();
+      var template = Handlebars.compile(source);
+      var context = {
+        "author": author
+      };
+      var html = template(context);
+      $("#author-select").append(html);
+      authors.push(author);
+    }
+  }
+}
 
 /***/ }),
 
@@ -16144,8 +16173,8 @@ y;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Luca\desktop\Classe17\php-ajax-dischi\src\app.js */"./src/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Luca\desktop\Classe17\php-ajax-dischi\src\app.scss */"./src/app.scss");
+__webpack_require__(/*! C:\Users\Luca\Desktop\Classe17\php-ajax-dischi\src\app.js */"./src/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Luca\Desktop\Classe17\php-ajax-dischi\src\app.scss */"./src/app.scss");
 
 
 /***/ })
